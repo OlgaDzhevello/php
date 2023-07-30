@@ -1,6 +1,6 @@
 let lastOperand = 0;            // последний операнд
 let operation = null;           // текущая операция 
-let valueBtn = '';              // знак на кнопке
+let currentBtn = ''             // текущая кнопка
 
 const inputWindow = document.querySelector('#inputWindow');     // поле ввода
 const cardBody = document.querySelector('.card-body');          // контейнер с кнопками
@@ -10,67 +10,91 @@ const cardBody = document.querySelector('.card-body');          // контей�
 function clear_input() {
     lastOperand = 0;
     operation = '';
+    currentBtn = '';
+    inputWindow.value = '';
+}
+
+// запомнить операцию
+
+function rememberOperation(curOperation) {
+    lastOperand = parseInt(inputWindow.value);
+    operation = curOperation;
     inputWindow.value = ''
-};
+}
 
-// определение значения кнопки
+// Вычисление
 
-
-
-// слушаем событие нажатия на контейнер с кнопками
-
-cardBody.addEventListener('click', function (event) {
-    console.log(event);
-    buttonValue=event.target.innerText;
-    console.log(buttonValue);
-    if (operationBtn >= 0 && operationBtn <= 9) {
-        console.log(operationBtn);
-        inputWindow.value += operationBtn;
-    };
-})
-
-document.querySelector('#btn_clr').addEventListener('click', function () {
-    clear_input();
-});
-
-document.querySelector('#btn_sum').addEventListener('click', function () {
-    lastOperand = parseInt(inputWindow.value);
-    operation = 'sum';
-    inputWindow.value = '';
-})
-
-document.querySelector('#btn_def').addEventListener('click', function () {
-    lastOperand = parseInt(inputWindow.value);
-    operation = 'def';
-    inputWindow.value = '';
-})
-
-document.querySelector('#btn_mult').addEventListener('click', function () {
-    lastOperand = parseInt(inputWindow.value);
-    operation = 'mult';
-    inputWindow.value = '';
-})
-
-document.querySelector('#btn_calc').addEventListener('click', function () {
+function resultCalc() {
     let result;
-        if (operation === 'sum') {
-        result = lastOperand + parseInt(inputWindow.value);
-    } else if (operation === 'def') {
-        result = lastOperand - parseInt(inputWindow.value);
-    } else if (operation === 'mult') {
-        result = lastOperand * parseInt(inputWindow.value);
-    } else {}
+    switch (operation) {
+        case 'sum':
+            result = lastOperand + parseInt(inputWindow.value);
+            break;
+        case 'def':
+            result = lastOperand - parseInt(inputWindow.value);
+            break;
+        case 'mult':
+            result = lastOperand * parseInt(inputWindow.value);
+            break;
+        case 'del':
+            result = lastOperand / parseInt(inputWindow.value);
+            break;
+        default:
+    }
+    checkNaN(result);
+    lastOperand = 0;
+    operation = null;
+}
 
+function checkNaN(result) {
     if (isNaN(result)) {
         inputWindow.value = 'ERROR';
         setTimeout(clear_input, 1000);
     } else {
-        inputWindow.value = result
+        inputWindow.value = result;
     }
-    lastOperand = 0;
-    operation = null;
-})
+}
 
-// document.querySelector('#btn_1').addEventListener('click', function () {
-//     inputWindow.value += '1';
-// })
+// слушаем Клик на контейнер с кнопками
+
+cardBody.addEventListener('click', function (event) {
+    currentBtn = event.target.id;
+    // logData();
+    switch (currentBtn) {
+        case 'inputWindow':
+            break;
+        case 'btn_clr':         // очистка
+            clear_input();
+            break;
+        case 'btn_sum':         // сумма
+            rememberOperation('sum');
+            break;
+        case 'btn_def':
+            rememberOperation('def');
+            break;
+        case 'btn_mult':
+            rememberOperation('mult');
+            break;
+        case 'btn_del':
+            rememberOperation('del');
+            break;
+        case 'btn_root':
+            checkNaN(Math.sqrt(inputWindow.value));
+            break;
+        case 'btn_calc':
+            resultCalc();
+            break;
+        default:
+            const buttonValue = currentBtn[currentBtn.length-1];
+            if (buttonValue >= 0 && buttonValue <= 9) {
+                inputWindow.value +=buttonValue;
+            };
+    };
+});
+
+// вывод для отладки
+function logData () {   
+    console.log('lastOperand = ' + lastOperand);
+    console.log('operation = ' + operation);
+    console.log('currentBtn = ' + currentBtn);
+}
