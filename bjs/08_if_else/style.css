@@ -1,4 +1,95 @@
-.game-card {
+body, div, * {
+    margin: 0;
+}
+
+.game-card {        /*  карточка игры */
     height: 100vh;
     font-family: 'Open Sans', monospace;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.card {
+    min-width: 50vw; 
+    border: solid 1px #2fa4e7;
+    background-color:  #afd8f050;
+    border-radius: 0.5rem;
+
+}
+
+.card-header {      /* Заголовок */
+    padding: 1rem;
+    text-align: center;
+    border-bottom: 1px solid #2fa4e7;
+}
+
+h3 {                /* Вопрос в заголовке */
+    padding: 1rem 1rem 2rem 1rem;
+    font-size: 1.17rem;
+    text-align: center;
+}
+
+.card-body {        /* Основная часть */
+    background-color:#fefefe;
+}
+
+.card-footer {      /* Подвал */
+    text-align: center;
+    border-top: solid #2fa4e7 1px;
+}
+
+/* -- Кнопки -- */
+
+.btn-group {
+    position: relative;
+    vertical-align: middle;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.btn {
+    text-align: center;
+    margin: 0.5rem;
+    padding: 0.5rem 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-size: 16px;
+    color: white;
+}
+
+.btn-info {             /* Больше и меньше */
+    border: 1px solid #2fa4e7;
+    background-color:  #2fa4e7;
+}
+
+.btn-success {          /* Верно */
+    padding: 0.5rem 1.2rem;
+    border: 1px solid #73a839;
+    background-color:  #73a839;
+}
+
+.btn-link {             /* Заново */
+    border: 1px solid #2fa4e7;
+    background-color: white;
+    color: #2fa4e7;
+}
+
+/* -- Поведение кнопок -- */
+
+.btn:hover {
+    background-color: white;
+    /* color: #555555; */
+    color: #2fa4e7;
+}
+
+.btn-success:hover {
+    background-color: white;
+    color: #4CAF50;
+}
+
+.btn-link:hover {
+    background-color: #2fa4e7; 
+    color: white;
 }
