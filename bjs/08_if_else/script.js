@@ -55,13 +55,13 @@ function gameBegin() {
     minValue = parseInt(prompt('Минимальное значение числа для игры', -999));
     if (minValue !== 0 || isNaN(minValue)) {        
         minValue = minValue || -999;
-        minValue = checkInputValue(minValue);
+        minValue = minValue <= -1000 ? -999 : (minValue >= 1000 ? 999 : minValue);
     };
     
     maxValue = parseInt(prompt('Максимальное значение числа для игры', 999));
     if (maxValue !== 0 || isNaN(maxValue)) {
         maxValue = maxValue || 999;
-        maxValue = checkInputValue(maxValue);
+        maxValue = maxValue <= -1000 ? -999 : (maxValue >= 1000 ? 999 : maxValue);
     };
  
     alert(`Загадайте любое целое число от ${minValue} до ${maxValue}, а я его угадаю`);
@@ -69,16 +69,6 @@ function gameBegin() {
     gameRun = true;
     findMiddle();         // ищем среднее и выводим вопрос
 }   
-
-// проверка попадания в пределы
-function checkInputValue(result) {
-    if (result <= -1000) {
-        result = -999;
-    } else if (result >= 1000) {
-        result = 999;
-    }
-    return result;
-}
 
 // поиск среднего значения и формирование вопроса
 function findMiddle () {
