@@ -52,7 +52,6 @@ document.querySelector('#btnEqual').addEventListener('click', function () {
 
 // начало игры
 function gameBegin() {
-
     minValue = parseInt(prompt('Минимальное значение числа для игры', -999));
     if (minValue !== 0 || isNaN(minValue)) {        
         minValue = minValue || -999;

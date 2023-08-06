@@ -1,86 +1,75 @@
-body, div, * {
+.container, body * {
     margin: 0;
-}
+} 
 
-.game-card {        /*  карточка игры */
+.game-card {       
     height: 100vh;
     font-family: 'Open Sans', monospace;
     display: flex;
-    justify-content: space-around;
-    align-items: center;
 }
 
 .card {
-    min-width: 50vw; 
+    min-width: 50vh; 
     border: solid 1px #2fa4e7;
     background-color:  #afd8f050;
     border-radius: 0.5rem;
 
 }
 
-.card-header {      /* Заголовок */
+.card-header {      
     padding: 1rem;
-    text-align: center;
     border-bottom: 1px solid #2fa4e7;
 }
 
-h3 {                /* Вопрос в заголовке */
+h3 {      
     padding: 1rem 1rem 2rem 1rem;
-    font-size: 1.17rem;
-    text-align: center;
+    font-size: 1.5rem;
 }
 
-.card-body {        /* Основная часть */
+.card-body {       
     background-color:#fefefe;
 }
 
-.card-footer {      /* Подвал */
-    text-align: center;
+.card-footer {     
     border-top: solid #2fa4e7 1px;
 }
 
-/* -- Кнопки -- */
-
 .btn-group {
-    position: relative;
-    vertical-align: middle;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
 }
 
 .btn {
-    text-align: center;
     margin: 0.5rem;
     padding: 0.5rem 1rem;
-    margin-bottom: 1rem;
-    border-radius: 8px;
-    font-size: 16px;
+    font-size: 1.2rem;
     color: white;
 }
 
-.btn-info {             /* Больше и меньше */
+.btn-info {             
     border: 1px solid #2fa4e7;
     background-color:  #2fa4e7;
 }
 
-.btn-success {          /* Верно */
+.btn-success {         
     padding: 0.5rem 1.2rem;
     border: 1px solid #73a839;
     background-color:  #73a839;
 }
 
-.btn-link {             /* Заново */
+.btn-link {           
     border: 1px solid #2fa4e7;
     background-color: white;
     color: #2fa4e7;
+    padding: 1.2rem 2rem;
+    text-decoration: none;
 }
-
-/* -- Поведение кнопок -- */
 
 .btn:hover {
     background-color: white;
-    /* color: #555555; */
+}
+
+.btn-info:hover {
+    border: 1px solid #2fa4e7;
     color: #2fa4e7;
 }
 
@@ -92,4 +81,5 @@ h3 {                /* Вопрос в заголовке */
 .btn-link:hover {
     background-color: #2fa4e7; 
     color: white;
-}
+    text-decoration: none;
+} 
