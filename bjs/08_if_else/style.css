@@ -1,10 +1,8 @@
-.container, body * {
-    margin: 0;
-} 
-
 .game-card {       
     height: 100vh;
     font-family: 'Open Sans', monospace;
+    display: -webkit-box;       /* автопрефиксер */
+    display: -ms-flexbox;       /* автопрефиксер */
     display: flex;
 }
 
@@ -14,6 +12,10 @@
     background-color:  #afd8f050;
     border-radius: 0.5rem;
 
+}
+
+.col {
+    width: auto;
 }
 
 .card-header {      
@@ -35,6 +37,8 @@ h3 {
 }
 
 .btn-group {
+    display: -webkit-box;       /* автопрефиксер */
+    display: -ms-flexbox;       /* автопрефиксер */
     display: flex;
 }
 

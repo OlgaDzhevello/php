@@ -97,7 +97,7 @@ function findMiddle () {
     answerField.innerText = answerPhrase + textOrNumber(answerNumber) + '?';
 }
 
-// ответ - сообщение + оставнока игры
+// ответ - положительный или отрицательный результат
 function answer (bool = true) {
 
     let phraseRandom = Math.round( Math.random() * 4);
@@ -117,29 +117,6 @@ function answer (bool = true) {
     }
     return answerPhrase;
 }
-
-// Верный ответ - сообщение + оставнока игры
-function correctAnswer () {
-
-    let phraseRandom = Math.round( Math.random() * 4);
-    let answerPhrase;
-    switch (phraseRandom) {
-        case 1:
-            answerPhrase = `Я всегда угадываю\n\u{1F60E}`;
-            break;
-        case 2:
-            answerPhrase = `Я всегда угадываю\n\u{1F60E}`;
-            break;
-        case 3:
-            answerPhrase = `Я всегда угадываю\n\u{1F60E}`;
-            break;
-        default:
-            answerPhrase = `Я всегда угадываю\n\u{1F60E}`;
-    }
-    answerField.innerText = answerPhrase;
-    gameRun = false;
-}
-
 
 //  возврат значения числом или текстом < 20 символов
 function textOrNumber(answerNumber) {
