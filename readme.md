@@ -10,7 +10,9 @@
 
 Пользователь загадывает число и вводит диапазон поиска в пределах от ***-999*** до ***999***.
 
-Запустить по [ссылке](https://olgadzhevello.github.io/php/bjs/08_if_else/index.html) или  [тут](./bjs/08_if_else/index.html)
+
+[Запуск](https://olgadzhevello.github.io/php/bjs/08_if_else/index.html) (
+[HTML](./bjs/08_if_else/index.html), [CSS](./bjs/08_if_else/style.css), [JS](./bjs/08_if_else/script.js))
 
 
 ### Используемые технологии
