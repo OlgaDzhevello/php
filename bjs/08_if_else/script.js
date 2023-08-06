@@ -20,7 +20,8 @@ document.querySelector('#btnRetry').addEventListener('click', function () {
 document.querySelector('#btnOver').addEventListener('click', function () {
     if (gameRun){
         if ((minValue === maxValue) || (answerNumber >= maxValue)) {
-            incorrectAnswer();      // Неверный ответ
+            answerField.innerText = answer(false);      // Неверный ответ
+            gameRun = false;
         } else {
             minValue = answerNumber + 1;
             findMiddle();           // ищем среднее и выводим вопрос
@@ -32,7 +33,8 @@ document.querySelector('#btnOver').addEventListener('click', function () {
 document.querySelector('#btnLess').addEventListener('click', function () {
     if (gameRun){
         if ((minValue === maxValue) || (answerNumber <= minValue)) {
-            incorrectAnswer();     // Неверный ответ
+            answerField.innerText = answer(false);      // Неверный ответ
+            gameRun = false;
         } else {
             maxValue = answerNumber - 1;
             findMiddle();          // ищем среднее и выводим вопрос
@@ -43,7 +45,7 @@ document.querySelector('#btnLess').addEventListener('click', function () {
 // Нажали "Верно"
 document.querySelector('#btnEqual').addEventListener('click', function () {
     if (gameRun){
-        answerField.innerText = `Я всегда угадываю\n\u{1F60E}`;
+        answerField.innerText = answer();
         gameRun = false;
     }
 });
@@ -81,42 +83,63 @@ function findMiddle () {
     let answerPhrase;
     switch (phraseRandom) {
         case 1:
-            answerPhrase = `Да это легко! Ты загадал`;
+            answerPhrase = `Да это легко! Ты загадал \n`;
             break;
         case 2:
-            answerPhrase = `Наверное это число`;
+            answerPhrase = `Наверное это число \n`;
             break;
         case 3:
-            answerPhrase = `Похоже это `;
+            answerPhrase = `Похоже это \n`;
             break;
         default:
-            answerPhrase = `Вы загадали число `;
+            answerPhrase = `Вы загадали число \n`;
     }
-    answerField.innerText = answerPhrase + ' ' + textOrNumber(answerNumber) + '?';
+    answerField.innerText = answerPhrase + textOrNumber(answerNumber) + '?';
 }
 
-// некорректный ответ - сообщение + оставнока игры
-function incorrectAnswer () {
+// ответ - сообщение + оставнока игры
+function answer (bool = true) {
 
     let phraseRandom = Math.round( Math.random() * 4);
     let answerPhrase;
-    
     switch (phraseRandom) {
         case 1:
-            answerPhrase = `Я сдаюсь..\n\u{1F92F}`;
+            answerPhrase = bool ? `Я всегда угадываю\n\u{1F60E}` : `Я сдаюсь..\n\u{1F92F}`;
             break;
         case 2:
-            answerPhrase = `Вы загадали неправильное число!\n\u{1F914}`;
+            answerPhrase = bool ? `Ура!!\n\u{1F60E}` : `Вы загадали неправильное число!\n\u{1F914}`;
             break;
         case 3:
-            answerPhrase = `Ответ невозможен! \n\u{1F975}`;
+            answerPhrase = bool ? `Отлично!\n\u{1F60E}` : `Ответ невозможен! \n\u{1F975}`;
             break;
         default:
-            answerPhrase = `Так нельзя...\n\u{1F62A}`;
+            answerPhrase = bool ? `Я всегда прав\n\u{1F60E}` : `Так нельзя...\n\u{1F62A}`;
     }
-        answerField.innerText = answerPhrase;
-        gameRun = false;
+    return answerPhrase;
 }
+
+// Верный ответ - сообщение + оставнока игры
+function correctAnswer () {
+
+    let phraseRandom = Math.round( Math.random() * 4);
+    let answerPhrase;
+    switch (phraseRandom) {
+        case 1:
+            answerPhrase = `Я всегда угадываю\n\u{1F60E}`;
+            break;
+        case 2:
+            answerPhrase = `Я всегда угадываю\n\u{1F60E}`;
+            break;
+        case 3:
+            answerPhrase = `Я всегда угадываю\n\u{1F60E}`;
+            break;
+        default:
+            answerPhrase = `Я всегда угадываю\n\u{1F60E}`;
+    }
+    answerField.innerText = answerPhrase;
+    gameRun = false;
+}
+
 
 //  возврат значения числом или текстом < 20 символов
 function textOrNumber(answerNumber) {
