@@ -3,8 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Генератор случайных пользователей</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
-          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans" rel="stylesheet">
     <link rel="stylesheet" href="style.css" type="text/css"/>
 </head>
@@ -19,15 +18,21 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col">
-                            <h3 class="card-title"><span id="surnameOutput">Генерация фамилии</span></h3>
+                            <h3 class="card-title">Фамилия: <span id="surnameOutput">Жданов</span></h3>
                             <h4>Имя: <span id="firstNameOutput">Иван</span></h4>
+                            <h4>Отчество: <span id="patronymicOutput">Иванович</span></h4>
                             <p>
-                                <span id="genderOutput">Генерация пола</span>
+                                Пол: <span id="genderOutput">Мужчина</span>
                                 <span>, </span>
-                                <span id="birthYearOutput">Генерация года рождения</span>
+                                дата рожения: <span id="birthYearOutput">1900</span>
                             </p>
+                            <p>Профессия: <span id="professionOutput">Печник</span></p>
                         </div>
                     </div>
+                </div>
+                <div class="card-footer">
+                    <button type="button" class="btn btn-outline-primary" id="generateBtn">Генерировать</button>
+                    <button type="button" class="btn btn-outline-danger" id="clearBtn">Очистить</button>
                 </div>
             </div>
         </div>

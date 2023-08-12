@@ -1,0 +1,46 @@
+.game-card {       
+    height: 100vh;
+    /* font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue","Noto Sans","Liberation Sans",Arial,sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji"; */
+    font-family: var(--bs-font-sans-serif);
+}
+
+.card {
+    min-width: 50vh; 
+    border: 1px solid #0d6efd;
+    border-radius: 0.5rem;
+}
+
+.card-body {       
+    padding: 1.5rem;
+}
+
+span {
+    color: #0445A4;
+}
+
+p {
+    margin: 0;
+}
+
+.btn {
+    width: 30%;
+    min-width: min-content;
+    background-color: white;
+}
+
+#clearBtn {
+    margin-left: 20 px;
+}
+
+.card-footer {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.card-header {
+    padding-top: 1.3rem;
+    padding-bottom: 1.3rem;
+
+}
