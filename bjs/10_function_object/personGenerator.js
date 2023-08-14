@@ -52,23 +52,7 @@ const personGenerator = {
             "id_10": "Алина"
         }
     }`,
-
-   patronymicMaleJson: `{
-        "count": 10,
-        "list": {     
-            "id_1": "Александрович",
-            "id_2": "Максимович",
-            "id_3": "Иванович",
-            "id_4": "Артемович",
-            "id_5": "Дмитриевич",
-            "id_6": "Никитович",
-            "id_7": "Михайлович",
-            "id_8": "Даниилович",
-            "id_9": "Егорович",
-            "id_10": "Андреевич"
-        }
-    }`,
-
+    
     professionJson: `{
         "count": 10,
         "list": {     
@@ -107,18 +91,18 @@ const personGenerator = {
     },
 
     randomPatronymic: function() {
-        let curPatr = this.randomValue(this.patronymicMaleJson);
-        if ( !isMale ) {
-            switch (curPatr) {
-                case "Никитович":
-                    curPatr = "Никитишна"
-                    break;
-                default:
-                    curPatr = curPatr.substring(0, curPatr.length - 2) + 'на'
-                    break;
-            }; 
+
+        let curPatr = this.randomValue(this.firstNameMaleJson); // Мужское имя
+
+        let endName1 = curPatr.slice(-1);                 // единичное окончание
+        if (endName1 === 'а' || endName1 === 'я') {       // первое склонение - безударное
+            return isMale ? `${curPatr.slice(0,-1)}ич` : `${curPatr.slice(0,-1)}ична`; 
+        } else {                                           // второе склонение
+            if (endName1 === 'й' ) {                        // не рассматриваем вариант исключений для "ий" переходящих в "ь"
+                return isMale ? `${curPatr.slice(0,-1)}евич` : `${curPatr.slice(0,-1)}евна`; 
+            };
+            return isMale ? `${curPatr}ович` : `${curPatr}овна`; 
         };
-        return curPatr;
     },
 
     randomDate: function() {
